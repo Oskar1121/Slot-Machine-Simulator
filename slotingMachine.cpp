@@ -227,10 +227,12 @@ void SlotingMachine::checkWinningLines(ReportDataPtr pData, const std::vector<Sy
         }
     }
 
-    if (checkWin(pData, SYMBOL_SCATTER, nScatterQuantity))
+    if (!checkWin(pData, SYMBOL_SCATTER, nScatterQuantity))
     {
-        pData->vecSymbols = vecSymbols;
+        return;
     }
+
+    pData->vecSymbols = vecSymbols;
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -327,7 +329,7 @@ void SlotingMachine::run()
         }
     }
 
-    strAdditionalReport << "\n\nName, Multiplier, Hits, Hits%, TotalValue, TotalValue%, 1/(w), 1/(g)";
+    strAdditionalReport << "\n\nName Multiplier Hits Hits% TotalValue TotalValue% 1/(w), 1/(g)";
     for (const auto& itWinningLine : umapLineWins)
     {
         const std::string strSymbolName = getSymbolName(itWinningLine.first);

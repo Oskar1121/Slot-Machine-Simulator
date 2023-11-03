@@ -1,8 +1,11 @@
 #pragma once
 
+#include <unordered_map>
 #include <map>
 #include <vector>
 #include <execution>
+#include <cstdint>
+#include <memory>
 
 static constexpr auto DEFAULT_BET = 100;
 
